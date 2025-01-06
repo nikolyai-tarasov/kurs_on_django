@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Список товаров {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+<h1>Вход</h1>
+<div class="col-6 col-md">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+
+    <a href="{% url 'users:generate_password' %}" class="icon-link"><font
+            style="vertical-align: inherit;"><font
+            style="vertical-align: inherit;">
+        Восстановление пароля
+    </font></font>
+        <svg class="bi">
+            <use xlink:href="#chevron-right"></use>
+        </svg>
+    </a>
+
+</div>
+
+
+{% include 'header.html' %}
+{% endblock %}

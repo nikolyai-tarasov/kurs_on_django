@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Список товаров {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+<h1>Регистрация</h1>
+<div class="col-6 col-md">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+    </form>
+</div>
+
+{% include 'header.html' %}
+{% endblock %}
