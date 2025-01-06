@@ -41,6 +41,20 @@ files = [
 ]
 
 [[package]]
+name = "confusable-homoglyphs"
+version = "3.3.1"
+description = "Detect confusable usage of unicode homoglyphs, prevent homograph attacks."
+optional = false
+python-versions = "*"
+files = [
+    {file = "confusable_homoglyphs-3.3.1-py2.py3-none-any.whl", hash = "sha256:84c92cb79dc7f55aa290d0762b2349abd8dee4c16fbe6f99eac978d394e2e6a1"},
+    {file = "confusable_homoglyphs-3.3.1.tar.gz", hash = "sha256:b995001c9b2e1b4cea0cf5f3840a7c79188a8cbbad053d693572bd8c1c1ec460"},
+]
+
+[package.extras]
+cli = ["click"]
+
+[[package]]
 name = "decorator"
 version = "5.1.1"
 description = "Decorators for Humans"
@@ -70,6 +84,21 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-registration"
+version = "5.1.0"
+description = "An extensible user-registration application for Django."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "django_registration-5.1.0-py3-none-any.whl", hash = "sha256:5e3677e64f39a5d659768b93938870286b90ff500b983fd69153012fabea73fd"},
+    {file = "django_registration-5.1.0.tar.gz", hash = "sha256:e64b0b1d24886fc740122862630ec00b8c2ffd4ab6d0e0a9bced870374d1436b"},
+]
+
+[package.dependencies]
+confusable-homoglyphs = ">=3.0"
+Django = ">=4.2"
 
 [[package]]
 name = "executing"
@@ -507,4 +536,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "f7bc832d3cf1a705bb2aa095b4b6f2b03b6d3dfda5262b41f2eb1f3c375067a7"
+content-hash = "82fbf41fca62c7efdc8254419ec006006935e368d57bb61b1f7bcd4ab5ca4d9b"

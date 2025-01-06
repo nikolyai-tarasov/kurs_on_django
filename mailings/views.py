@@ -1,5 +1,5 @@
 import os
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.utils import timezone
 from django.core.mail import send_mail
@@ -12,6 +12,7 @@ from mailings.models import Recipient, Message, Newsletter, MailingAttempt
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.core.cache import cache
+
 
 
 

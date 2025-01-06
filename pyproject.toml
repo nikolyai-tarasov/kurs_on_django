@@ -13,6 +13,7 @@ psycopg2-binary = "^2.9.10"
 pillow = "^11.0.0"
 ipython = "^8.31.0"
 redis = "^5.2.1"
+django-registration = "^5.1.0"
 
 
 [build-system]
