@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} Список товаров {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="album py-2 bg-body-tertiary">
+            {% if user.is_authenticated %}
+            <a href="{% url 'mailings:create_newsletter' %}" class="icon-link">
+                {% else %}
+                <a href="{% url 'users:login' %}" class="icon-link">
+                    {% endif %}<font
+                        style="vertical-align: inherit;"><font
+                        style="vertical-align: inherit;">
+                    Добавить свою рассылку
+                </font></font>
+                    <svg class="bi">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for newsletter in newsletters %}
+            {% if "mailings.can_unpublish" in perms %}
+            <div class="col">
+                <div class="card shadow-sm">
+
+                    <div class="card-body">
+                        <p class="card-text">{{newsletter.first_shipment}}</p>
+                        <p class="card-text">{{newsletter.last_dispatch }}</p>
+                        <p class="card-text">{{newsletter.status}}</p>
+                        <p class="card-text">{{newsletter.message }}</p>
+                        {% for recipient in newsletter.recipients.all %}
+                        <p class="card-text">{{recipient.email }}</p>
+                        {%endfor%}
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+
+                                <a class="p-2 btn btn-outline-primary"
+                                   href="{% url 'mailings:detail_newsletter' newsletter.id%}">Ознакомиться</a>
+                                <a class="p-2 btn btn-outline-primary"
+                                   href="{% url 'mailings:update_newsletter' newsletter.id%}">Редактировать</a>
+                                {%endif%}
+                                {% if user.is_authenticated and user == recipient.owner_recipient %}
+                                <a class="p-2 btn btn-danger"
+
+                                   href="{% url 'mailings:delete_newsletter' newsletter.id%}">Удалить</a>
+                                {% endif %}
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+
+{% include 'header.html' %}
+{% endblock %}

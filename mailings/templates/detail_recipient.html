@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Список товаров {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{{recipient.avatar | media_filter}}">
+                    <div class="card-body">
+                        <p class="card-text">{{recipient.email}}</p>
+                        <p class="card-text">{{recipient.full_name }}</p>
+                        <p class="card-text">{{recipient.comment }}</p>
+                        <a class="p-2 btn btn-outline-primary" href="#">Отправить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'header.html' %}
+{% endblock %}

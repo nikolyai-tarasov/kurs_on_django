@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Список товаров {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card shadow-sm">
+
+                    <div class="card-body">
+                        <p class="card-text">{{newsletter.first_shipment}}</p>
+                        <p class="card-text">{{newsletter.last_dispatch }}</p>
+                        <p class="card-text">{{newsletter.status}}</p>
+                        <p class="card-text">{{newsletter.message }}</p>
+                        {% for recipient in newsletter.recipients.all %}
+                        <p class="card-text">{{recipient.email }}</p>
+                        {%endfor%}
+                        <form method="post" action="{% url 'mailings:send_newsletter' newsletter.id %}">
+                             {% csrf_token %}
+                            <button type="submit">Отправить сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'header.html' %}
+{% endblock %}

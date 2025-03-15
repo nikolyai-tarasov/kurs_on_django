@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Skymailing {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+<body>
+<h1>Статистика попыток рассылки</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Получатель</th>
+        <th>Статус</th>
+        <th>Ответ</th>
+        <th>Дата попытки</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for attempt in attempts %}
+    <tr>
+        <td>
+            {% for recipient in attempt.newsletter.recipients.all %}
+            {{ recipient.full_name }} - {{ recipient.email }}<br>
+            {% endfor %}
+        </td>
+        <td>{{ attempt.status }}</td>
+        <td>{{ attempt.mail_reply }}</td>
+        <td>{{ attempt.date_of_attempt }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Нет данных о попытках отправки.</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href="#">Назад</a>
+</body>
+
+{% include 'header.html' %}
+{% endblock %}

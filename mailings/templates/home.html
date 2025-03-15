@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %} Skymailing {% endblock %}
+{% load my_tags %}
+{% block content %}
+
+
+<div class="container px-4 py-5" id="featured-3">
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="feature col">
+
+            <h3 class="fs-2 text-body-emphasis"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">Наши клиенты</font></font></h3>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Мы рады предоставить базу
+                наших
+                клиентов, с которыми у нас построена база крепких, доверительных отношений.</font></font></p>
+            <a href="{% url 'mailings:recipient_list' %}" class="icon-link"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">
+                Список клиентов
+            </font></font>
+                <svg class="bi">
+                    <use xlink:href="#chevron-right"></use>
+                </svg>
+            </a>
+        </div>
+        <div class="feature col">
+
+            <h3 class="fs-2 text-body-emphasis"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">Сообщения</font></font></h3>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Настроенная база сообщений,
+                которая может заинтересовать даже самых не искушенных клиентов. </font></font></p>
+            <a href="{% url 'mailings:message_list' %}" class="icon-link"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">
+                Список сообщений
+            </font></font>
+                <svg class="bi">
+                    <use xlink:href="#chevron-right"></use>
+                </svg>
+            </a>
+        </div>
+        <div class="feature col">
+
+            <h3 class="fs-2 text-body-emphasis"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">Рассылки</font></font></h3>
+            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Рассылки список карточек
+                наших
+                клиентов и отправляемых им сообщений а также их статус.</font></font></p>
+            <p>
+                Общие количество рассылок - {{total_mailings}}
+            </p>
+            <p>
+                Количество активных рассылок - {{active_mailings}}
+            </p>
+            <p>
+                Уникальные пользователи - {{unique_recipients}}
+            </p>
+
+            <a href="{% url 'mailings:newsletter_list' %}" class="icon-link"><font
+                    style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                Список рассылок
+            </font></font>
+                <svg class="bi">
+                    <use xlink:href="#chevron-right"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% include 'header.html' %}
+{% endblock %}
